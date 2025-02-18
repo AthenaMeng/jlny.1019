@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加微信好友</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .add-wechat-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1aad19;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .add-wechat-link:hover {
+            background-color: #158c16;
+        }
+    </style>
+</head>
+<body>
+    <h1>点击下方链接添加微信好友</h1>
+    <a href="javascript:void(0);" class="add-wechat-link" onclick="openWechat()">添加微信好友</a>
+    <p>微信号：Ronaldo7520</p>
+
+    <script>
+        function openWechat() {
+            const wechatUrl = "weixin://contacts/profile/Ronaldo7520";
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isWeixin = userAgent.includes("micromessenger");
+            const isIOS = userAgent.includes("iphone") || userAgent.includes("ipad");
+
+            if (isWeixin) {
+                // 在微信内直接跳转
+                window.location.href = wechatUrl;
+            } else if (isIOS) {
+                // iOS设备直接跳转
+                window.location.href = wechatUrl;
+            } else {
+                // Android或其他设备提示用户
+                alert("请在微信内打开此链接，或手动添加微信号：Ronaldo7520");
+            }
+        }
+    </script>
+</body>
+</html>
